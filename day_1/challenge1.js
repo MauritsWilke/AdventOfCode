@@ -1,17 +1,5 @@
-const lineReader = require('readline').createInterface({
-	input: require('fs').createReadStream(`./day_1/input.txt`)
-});
-
+const fs = require(`fs`)
+const input = (fs.readFileSync("./day_1/input.txt", "utf-8")).split("\n");
 let timesIncreased = 0;
-let previous;
-let lineCount = 0;
-lineReader.on('line', function (line) {
-	let newDepth = parseInt(line)
-	if (lineCount !== 0 && (newDepth > previous)) timesIncreased = timesIncreased + 1
-	previous = line
-	lineCount++
-})
-
-lineReader.on('close', function (e) {
-	console.log(timesIncreased)
-})
+for (depth in input) if (input[depth] > +input[depth - 1]) timesIncreased++
+console.log(timesIncreased) // 1466
