@@ -16,7 +16,6 @@ for (i = 0; i < 12; i++) {
 		oxygenArray = oxygenArray.filter(data => data[i] == mostCommonBit)
 	}
 }
-console.log(oxygenArray[0]) // 010110101101
 
 let carbonArray = input
 for (i = 0; i < 12; i++) {
@@ -32,6 +31,5 @@ for (i = 0; i < 12; i++) {
 		carbonArray = carbonArray.filter(data => data[i] == leastCommonBit)
 	}
 }
-console.log(carbonArray[0]) // 100111110001
 
-console.log(parseInt(oxygenArray[0], 2) * parseInt(carbonArray[0], 2))
+console.log(parseInt(oxygenArray[0], 2) * parseInt(carbonArray[0], 2)) // 6822109
