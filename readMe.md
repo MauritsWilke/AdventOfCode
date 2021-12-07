@@ -15,3 +15,5 @@ The first commit of a file is the first working code with solution, the second i
 **Day 5:** Today I learned that if you submit the wrong answer too many times you have to wait 10 minutes :D
 
 **Day 6:** Easier than day 5, and quite fun. Did part 2 without rewriting because my code is so efficient 😎
+
+**Day 7:** Scrap efficiency, O(input^2) for both :L
