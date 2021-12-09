@@ -1,9 +1,11 @@
 # 🎄 Advent of Code - 2021
+
 First year of Advent of Code, all challenges will be done with JS.
 
 The first commit of a file is the first working code with solution, the second is the optimised code.
 
 # ✏ Notes
+
 **Day 1:** First day, easy challenge.
 
 **Day 2:** Quite easy, nothing much to say about this one
@@ -19,3 +21,5 @@ The first commit of a file is the first working code with solution, the second i
 **Day 7:** Scrap efficiency, O(input^2) for both :L
 
 **Day 8:** This one honestly was fun, even though it took ages. I have had enough regex for the rest of my life
+
+**Day 9:** Don't read my code for today, I cannot be bothered to make it better
