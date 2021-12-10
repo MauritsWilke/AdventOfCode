@@ -23,3 +23,5 @@ The first commit of a file is the first working code with solution, the second i
 **Day 8:** This one honestly was fun, even though it took ages. I have had enough regex for the rest of my life
 
 **Day 9:** Don't read my code for today, I cannot be bothered to make it better
+
+**Day 10:** Array galore: Pop it! Push it! Map it! Sort it!
