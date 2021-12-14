@@ -28,4 +28,8 @@ The first commit of a file is the first working code with solution, the second i
 
 **Day 11:** Those octopi are adorable, problem not too bad to solve
 
+**Day 12:** Yea about not visiting them twice...
+
+**Day 13:** Great challenge, I did take the 'FKU' in my output personally though </3
+
 **Day 14:** Part 2 was a great way to make me realise how stupid my part 1 code was :L
