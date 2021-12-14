@@ -27,3 +27,5 @@ The first commit of a file is the first working code with solution, the second i
 **Day 10:** Array galore: Pop it! Push it! Map it! Sort it!
 
 **Day 11:** Those octopi are adorable, problem not too bad to solve
+
+**Day 14:** Part 2 was a great way to make me realise how stupid my part 1 code was :L
