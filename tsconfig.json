@@ -2,9 +2,15 @@
 	"compilerOptions": {
 		"strict": true,
 		"target": "ESNEXT",
-		"outDir": "dist"
+		"outDir": "dist",
+		"moduleResolution": "node",
+		"watch": true
 	},
 	"exclude": [
 		"template/*"
+	],
+	"include": [
+		"**/*.txt",
+		"**/*.ts"
 	]
 }
