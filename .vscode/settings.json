@@ -1,0 +1,10 @@
+{
+	"files.exclude": {
+		"dist": true,
+		"node_modules": true,
+		".gitignore": true,
+		"package-lock.json": true,
+		"package.json": true,
+		"2021_archive": true,
+	}
+}

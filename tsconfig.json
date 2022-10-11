@@ -8,9 +8,5 @@
 	},
 	"exclude": [
 		"template/*"
-	],
-	"include": [
-		"**/*.txt",
-		"**/*.ts"
 	]
 }
