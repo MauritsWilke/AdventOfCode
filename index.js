@@ -48,7 +48,10 @@ try {
 	console.log("*                                      *");
 	console.log("****************************************");
 
+	const start = process.hrtime();
 	solution(input);
+	const end = process.hrtime(start);
+	console.log(`Solved in ${end[0]}s ${end[1] / 1000000}ms`)
 
 } catch {
 	console.log(`The input couldn't be found! Make sure you have a file named "input.txt" at "input/${year}/${day}/input.txt"`);
