@@ -1,5 +1,4 @@
 export default function solution(input:string) {
-	console.log(input)
-	
-
+	const floor = input.match(/\(/g)!.length - input.match(/\)/g)!.length
+	return floor
 }

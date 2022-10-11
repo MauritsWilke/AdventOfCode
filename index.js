@@ -1,8 +1,9 @@
 import inquirer from "inquirer";
-import { readdirSync, readFile, writeFileSync } from "fs";
+import { readdirSync, readFileSync, writeFileSync, existsSync } from "fs";
 
-const latest = await readFile("./latest", "utf8", function (err) { })
-	?.split(",") ?? ["2015", "01", "1"];
+const latest = existsSync("./latest") ?
+	readFileSync("./latest", "utf8")?.split(",")
+	: ["2015", "01", "1"];
 
 async function getYear() {
 	const years = readdirSync("./src", { withFileTypes: true })
@@ -61,11 +62,13 @@ async function solve(year, day, part) {
 		console.log("****************************************");
 
 		const start = process.hrtime();
-		solution(input);
+		const answer = solution(input) ?? "Return function forgotten";
 		const end = process.hrtime(start);
 		console.log(`Solved in ${end[0]}s ${end[1] / 1000000}ms`)
+		console.log(`Answer: ${answer}`)
 
-	} catch {
+	} catch (e) {
+		console.log(e)
 		console.log(`The input couldn't be found! Make sure you have a file named "input.txt" at "input/${year}/${day}/input.txt"`);
 	}
 }
