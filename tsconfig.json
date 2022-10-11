@@ -1,0 +1,10 @@
+{
+	"compilerOptions": {
+		"strict": true,
+		"target": "ESNEXT",
+		"outDir": "dist"
+	},
+	"exclude": [
+		"template/*"
+	]
+}
