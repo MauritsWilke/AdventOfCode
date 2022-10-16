@@ -1,3 +1,3 @@
-import * as fs from "fs";
-const input = fs.readFileSync("./input.txt");
-console.log(input)
+export default function solution(input:string) {
+	console.log(input)
+}
