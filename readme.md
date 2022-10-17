@@ -16,3 +16,6 @@ Open it in any editor (Visual Studio Code recommended) and add a folder for the 
 To run your solutions, make sure you compile first (`npx tsc`) and then run `node .`
 
 If you have any questions on how to use the template, feel free to DM me on Discord: `The Almighty One#3365`
+
+## Days I want to improve 
+ - [ ] [`/2015/15`](./src/2015/15/)
