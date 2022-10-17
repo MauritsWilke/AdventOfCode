@@ -6,7 +6,7 @@
 		"package-lock.json": true,
 		"package.json": true,
 		"2021_archive": true,
-		"latest": true
+		".latest": true
 	},
 	"task.allowAutomaticTasks": "on"
 }
