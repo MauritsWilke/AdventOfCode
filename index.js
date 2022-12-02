@@ -1,6 +1,7 @@
 import inquirer from "inquirer";
 import { readdirSync, readFileSync, writeFileSync, existsSync } from "fs";
 
+const args = process.argv.slice(2);
 const latest = existsSync("./.latest") ?
 	readFileSync("./.latest", "utf8")?.split(",")
 	: ["2015", "01", "1"];
@@ -73,14 +74,20 @@ async function solve(year, day, part) {
 	}
 }
 
-const year = await getYear();
-if (year === "Last executed file") {
-	solve(...latest);
+if (args.length === 3) {
+	writeFileSync("./.latest", `${args[0]},${args[1]},${args[2]}`);
+
+	solve(...args);
 } else {
-	const day = await getDay(year);
-	const part = await getPart(year, day);
+	const year = await getYear();
+	if (year === "Last executed file") {
+		solve(...latest);
+	} else {
+		const day = await getDay(year);
+		const part = await getPart(year, day);
 
-	writeFileSync("./.latest", `${year},${day},${part}`);
+		writeFileSync("./.latest", `${year},${day},${part}`);
 
-	solve(year, day, part);
+		solve(year, day, part);
+	}
 }
