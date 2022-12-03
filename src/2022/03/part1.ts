@@ -7,3 +7,10 @@ export default function solution(input: string) {
 
 	return answer
 }
+
+/*
+Golfed version. usually I don't golf but this one was way too fun to do.
+Final size: 166 chars 
+
+return input.split("\n").map(v=>v.match(new RegExp(`.{${v.length/2}}`,"g"))).map(v=>((v[0].match(new RegExp(`[${v[1]}]`)))[0].charCodeAt(0)-38)%58).reduce((a,b)=>a+b)
+*/
