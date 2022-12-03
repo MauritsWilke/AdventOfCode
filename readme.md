@@ -1,6 +1,6 @@
 # 🎄 Advent of Code
 
-This repo holds my solutions for Advent of Code. All years will be in here as well as all the years. As of now it is just 2015 (and 2021 archives) with TS but soon 2022 will also be added.
+This repo holds my solutions for Advent of Code. I have done 2015, part of 2021 and 2022. I only upload the code that got me the solution. This means there is no rewriting anything to make it more clean after that.
 
 ## 🛠 How to use
 To use this template, first download it and install the dependency:
@@ -16,7 +16,7 @@ To use this template, first download it and install the dependency:
 
 Open it in any editor ([Visual Studio Code](https://code.visualstudio.com/) recommended) and add a folder for the day you want to solve under its year (`2015/04`). Copy the files from [`template`](./template/) into the folder.
 
-To run your solutions, make sure you compile first (`npx tsc`) and then run `node .` which will start the CLI.
+To run your solutions, make sure you compile first (`npx tsc`) and then run `node .` which will start the CLI (or pass arguments to skip the CLI: `node . 2022 02 1`).
 
 If you have any questions on how to use the template, feel free to DM me on Discord: [`The Almighty One#3365`](https://discordapp.com/users/378874450105466880/)
 
