@@ -29,3 +29,4 @@ These are days with solutions I am ashamed of and want to improve on later 😅
 - [ ] Check your input data, copy and paste it again.
 - [ ] Check your hardcoded values, delete them and retype them.
 - [ ] If you have a grid, check if the X and Y are correct in _all_ cases
+- [ ] Check if you're not programming in `template/partX.ts` 😓
