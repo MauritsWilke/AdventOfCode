@@ -51,22 +51,65 @@ async function getPart(year, day) {
 	return part;
 }
 
-async function solve(year, day, part) {
+async function solve(year, day, part, times = 1) {
 	try {
 		const input = readFileSync(`./input/${year}/${day}/input.txt`, "utf-8");
 		const { default: solution } = await import(`./dist/${year}/${day}/part${part}.js`);
 
-		console.log("****************************************");
-		console.log("*                                      *");
-		console.log(`*   Solving part ${part} of day ${day} of ${year}   *`);
-		console.log("*                                      *");
-		console.log("****************************************");
+		if (times === 1) {
+			console.log("****************************************");
+			console.log("*                                      *");
+			console.log(`*   Solving part ${part} of day ${day} of ${year}   *`);
+			console.log("*                                      *");
+			console.log("****************************************");
+		} else {
+			console.log(`🏗️  Optimising the function, this may take up to 10 seconds max`)
+			let start = performance.now();
+			for (let i = 0; i < 1000 && (performance.now() - start) < 10000; i++) solution(input);
+		}
 
-		const start = process.hrtime();
-		const answer = solution(input) ?? "Return function forgotten";
-		const end = process.hrtime(start);
-		console.log(`Solved in ${end[0]}s ${end[1] / 1000000}ms`)
-		console.log(`Answer: ${answer}`)
+		/** Average variables */
+		let timesMeasuredNs = 0n;
+		let min = Infinity;
+		let max = 0;
+
+		/** Normal answer */
+		let answer;
+
+		const globalStart = process.hrtime.bigint();
+		for (let i = 0; i < times; i++) {
+			const start = process.hrtime.bigint();
+			answer = solution(input);
+			const end = process.hrtime.bigint();
+
+			const execTime = end - start;
+			timesMeasuredNs += execTime
+			if (execTime < min) min = execTime;
+			if (execTime > max) max = execTime;
+
+			if (i === 0 && times > 1) {
+				let expectedTime = ((Number(timesMeasuredNs) / 1_000_000_000 * times));
+				console.log(`⏱️  Measuring average, expected waiting time: ${expectedTime.toFixed(2)} seconds`);
+			}
+		}
+		const globalEnd = process.hrtime.bigint();
+
+		if (times === 1) {
+			answer ??= "Return function forgotten";
+			console.log(`Solved in ${Number(timesMeasuredNs) / 1_000_000}ms`)
+			console.log(`Answer: ${answer}`);
+		} else {
+			const average = Number(timesMeasuredNs) / times;
+			const minInMs = Number(min) / 1_000_000;
+			const maxInMs = Number(max) / 1_000_000;
+			const averageInMs = Number(average) / 1_000_000;
+			const timeTaken = (Number(globalEnd - globalStart) / 1_000_000_000).toFixed(2)
+
+			console.log(`📊 Execution time measurements over ${times} iterations in ${timeTaken} seconds`)
+			console.log(`✅ min     : ${minInMs}ms`)
+			console.log(`❌ max     : ${maxInMs}ms`)
+			console.log(`📈 average : ${averageInMs}ms`)
+		}
 
 	} catch (e) {
 		console.log(e)
@@ -74,7 +117,7 @@ async function solve(year, day, part) {
 	}
 }
 
-if (args.length === 3) {
+if (args.length >= 3) {
 	writeFileSync("./.latest", `${args[0]},${args[1]},${args[2]}`);
 
 	solve(...args);
