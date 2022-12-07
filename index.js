@@ -51,65 +51,76 @@ async function getPart(year, day) {
 	return part;
 }
 
-async function solve(year, day, part, times = 1) {
+async function solve(year, day, part) {
 	try {
 		const input = readFileSync(`./input/${year}/${day}/input.txt`, "utf-8");
 		const { default: solution } = await import(`./dist/${year}/${day}/part${part}.js`);
 
-		if (times === 1) {
-			console.log("****************************************");
-			console.log("*                                      *");
-			console.log(`*   Solving part ${part} of day ${day} of ${year}   *`);
-			console.log("*                                      *");
-			console.log("****************************************");
-		} else {
-			console.log(`🏗️  Optimising the function, this may take up to 10 seconds max`)
-			let start = performance.now();
-			for (let i = 0; i < 1000 && (performance.now() - start) < 10000; i++) solution(input);
+
+		console.log("****************************************");
+		console.log("*                                      *");
+		console.log(`*   Solving part ${part} of day ${day} of ${year}   *`);
+		console.log("*                                      *");
+		console.log("****************************************");
+
+		const start = process.hrtime.bigint();
+		const answer = solution(input) ?? "return function forgotten";
+		const end = process.hrtime.bigint();
+
+		console.log(`Solved in ${Number(end - start) / 1_000_000}ms`);
+		console.log(`Answer: ${answer}`);
+
+	} catch (e) {
+		console.log(e)
+		console.log(`The input couldn't be found! Make sure you have a file named "input.txt" at "input/${year}/${day}/input.txt"`);
+	}
+}
+
+async function measurePerformance(year, day, part, times) {
+	try {
+		const input = readFileSync(`./input/${year}/${day}/input.txt`, "utf-8");
+		const { default: solution } = await import(`./dist/${year}/${day}/part${part}.js`);
+
+		console.log(`🏗️  Optimising the function, this may take up to 10 seconds max`)
+		let start = performance.now();
+		let a;
+		let b;
+		for (let i = 0; i < 1000 && (performance.now() - start) < 10000; i++) {
+			a = process.hrtime.bigint();
+			solution(input);
+			b = process.hrtime.bigint();
 		}
 
-		/** Average variables */
+		let expectedTime = ((Number(b - a) / 1_000_000_000 * times));
+		console.log(`⏱️  Measuring average, expected waiting time: ${expectedTime.toFixed(2)} seconds`);
+
 		let timesMeasuredNs = 0n;
 		let min = Infinity;
 		let max = 0;
 
-		/** Normal answer */
-		let answer;
-
 		const globalStart = process.hrtime.bigint();
 		for (let i = 0; i < times; i++) {
 			const start = process.hrtime.bigint();
-			answer = solution(input);
+			solution(input);
 			const end = process.hrtime.bigint();
 
 			const execTime = end - start;
 			timesMeasuredNs += execTime
 			if (execTime < min) min = execTime;
 			if (execTime > max) max = execTime;
-
-			if (i === 0 && times > 1) {
-				let expectedTime = ((Number(timesMeasuredNs) / 1_000_000_000 * times));
-				console.log(`⏱️  Measuring average, expected waiting time: ${expectedTime.toFixed(2)} seconds`);
-			}
 		}
 		const globalEnd = process.hrtime.bigint();
 
-		if (times === 1) {
-			answer ??= "Return function forgotten";
-			console.log(`Solved in ${Number(timesMeasuredNs) / 1_000_000}ms`)
-			console.log(`Answer: ${answer}`);
-		} else {
-			const average = Number(timesMeasuredNs) / times;
-			const minInMs = Number(min) / 1_000_000;
-			const maxInMs = Number(max) / 1_000_000;
-			const averageInMs = Number(average) / 1_000_000;
-			const timeTaken = (Number(globalEnd - globalStart) / 1_000_000_000).toFixed(2)
+		const average = Number(timesMeasuredNs) / times;
+		const minInMs = Number(min) / 1_000_000;
+		const maxInMs = Number(max) / 1_000_000;
+		const averageInMs = Number(average) / 1_000_000;
+		const timeTaken = (Number(globalEnd - globalStart) / 1_000_000_000).toFixed(2)
 
-			console.log(`📊 Execution time measurements over ${times} iterations in ${timeTaken} seconds`)
-			console.log(`✅ min     : ${minInMs}ms`)
-			console.log(`❌ max     : ${maxInMs}ms`)
-			console.log(`📈 average : ${averageInMs}ms`)
-		}
+		console.log(`📊 Execution time measurements over ${times} iterations in ${timeTaken} seconds`)
+		console.log(`✅ min     : ${minInMs}ms`)
+		console.log(`❌ max     : ${maxInMs}ms`)
+		console.log(`📈 average : ${averageInMs}ms`)
 
 	} catch (e) {
 		console.log(e)
@@ -120,7 +131,8 @@ async function solve(year, day, part, times = 1) {
 if (args.length >= 3) {
 	writeFileSync("./.latest", `${args[0]},${args[1]},${args[2]}`);
 
-	solve(...args);
+	if (args.length === 3) solve(...args);
+	else measurePerformance(...args)
 } else {
 	const year = await getYear();
 	if (year === "Last executed file") {
