@@ -68,7 +68,7 @@ async function solve(year, day, part) {
 		const end = process.hrtime.bigint();
 
 		console.log(`Solved in ${Number(end - start) / 1_000_000}ms`);
-		console.log(`Answer: ${answer}`);
+		console.log(`Answer: \n${answer}`);
 
 	} catch (e) {
 		console.log(e)
