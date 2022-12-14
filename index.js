@@ -113,7 +113,7 @@ async function measurePerformance(year, day, part, times) {
 		}
 		const globalEnd = process.hrtime.bigint();
 
-		const average = Number(timesMeasuredNs) / times;
+		const average = Number(timesMeasuredNs) / iterations;
 		const minInMs = Number(min) / 1_000_000;
 		const maxInMs = Number(max) / 1_000_000;
 		const averageInMs = Number(average) / 1_000_000;
