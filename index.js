@@ -92,14 +92,16 @@ async function measurePerformance(year, day, part, times) {
 		}
 
 		let expectedTime = ((Number(b - a) / 1_000_000_000 * times));
-		console.log(`⏱️  Measuring average, expected waiting time: ${expectedTime.toFixed(2)} seconds`);
+		console.log(`⏱️  Measuring average, expected waiting time: ${Math.min(expectedTime.toFixed(2), 10)} seconds`);
 
 		let timesMeasuredNs = 0n;
 		let min = Infinity;
 		let max = 0;
+		let iterations = 0;
 
 		const globalStart = process.hrtime.bigint();
-		for (let i = 0; i < times; i++) {
+		for (let i = 0; i < times && (process.hrtime.bigint() - globalStart) < 10_000_000_000n; i++) {
+			iterations++;
 			const start = process.hrtime.bigint();
 			solution(input);
 			const end = process.hrtime.bigint();
@@ -117,7 +119,7 @@ async function measurePerformance(year, day, part, times) {
 		const averageInMs = Number(average) / 1_000_000;
 		const timeTaken = (Number(globalEnd - globalStart) / 1_000_000_000).toFixed(2)
 
-		console.log(`📊 Execution time measurements over ${times} iterations in ${timeTaken} seconds`)
+		console.log(`📊 Execution time measurements ${iterations} iterations in ${timeTaken} seconds`)
 		console.log(`✅ min     : ${minInMs}ms`)
 		console.log(`❌ max     : ${maxInMs}ms`)
 		console.log(`📈 average : ${averageInMs}ms`)
