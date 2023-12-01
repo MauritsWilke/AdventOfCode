@@ -1,1 +1,2 @@
-import "./String.js"
+import "./String.js";
+import "./Global.js";
