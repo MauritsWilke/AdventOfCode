@@ -1,5 +1,6 @@
 import inquirer from "inquirer";
 import { readdirSync, readFileSync, writeFileSync, existsSync } from "fs";
+import "./dist/util/index.js";
 
 const args = process.argv.slice(2);
 const latest = existsSync("./.latest") ?
