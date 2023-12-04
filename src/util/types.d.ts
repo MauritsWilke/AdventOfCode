@@ -9,4 +9,6 @@ interface Array<T> {
 	max(): number
 	min(): number
 	intersect(arr: any): T[]
+	chunk(size: number): T[][]
+	window(size: number): T[][]
 }
