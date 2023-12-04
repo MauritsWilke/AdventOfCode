@@ -18,3 +18,8 @@ Array.prototype.max = function () {
 Array.prototype.min = function () {
 	return Math.min(...this);
 }
+
+Array.prototype.intersect = function (arr: any[]) {
+	const setA = new Set(arr);
+	return this.filter(v => setA.has(v));
+}

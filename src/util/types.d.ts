@@ -5,7 +5,8 @@ interface String {
 interface Array<T> {
 	sum(): number
 	product(): number
-	uniques(): any[]
+	uniques(): T[]
 	max(): number
 	min(): number
+	intersect(arr: any): T[]
 }
