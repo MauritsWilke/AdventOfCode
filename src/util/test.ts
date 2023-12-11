@@ -6,3 +6,6 @@ const intersect = chunk[0].intersect(chunk[1]);
 const uniques = intersect.uniques();
 const product = uniques.product();
 const sum = uniques.sum();
+
+const test = ["a", "b", 'c', "d"]
+console.log(test.pairs())
