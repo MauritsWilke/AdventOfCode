@@ -11,4 +11,5 @@ interface Array<T> {
 	intersect(arr: any): T[]
 	chunk(size: number): T[][]
 	window(size: number): T[][]
+	pairs(): T[][]
 }

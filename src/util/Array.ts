@@ -42,3 +42,7 @@ Array.prototype.window = function (size: number) {
 	}
 	return arr;
 }
+
+Array.prototype.pairs = function () {
+	return this.map((v, i) => this.slice(i + 1).map(w => [v, w])).flat();
+}
