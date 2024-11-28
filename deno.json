@@ -1,0 +1,10 @@
+{
+    "tasks": {
+        "prep": "deno run -A --env-file --unstable-cron utils/prep.ts",
+        "solve": "TODO submits answer to server"
+    },
+    "imports": {
+        "@std/assert": "jsr:@std/assert@1",
+        "@std/cli": "jsr:@std/cli@^1.0.7"
+    }
+}
