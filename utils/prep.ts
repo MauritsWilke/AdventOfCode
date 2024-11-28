@@ -48,7 +48,11 @@ async function prep() {
 
     console.log(`🧪 Watcher started for test cases`);
 
+    let lastRan = Date.now();
     for await (const e of watcher) {
-        if (e.kind === "access") await runTests(YEAR, DATE, PART);
+        const now = Date.now();
+        if (now - lastRan < 100) continue;
+        await runTests(YEAR, DATE, PART);
+        lastRan = now;
     }
 }
