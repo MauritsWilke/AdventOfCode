@@ -2,10 +2,25 @@ export async function fetchInput(YEAR: string, DATE: string, SESSION: string) {
     const formattedDate = `0${DATE}`.slice(-2);
 
     const res = await fetch(`https://adventofcode.com/${YEAR}/day/${DATE}/input`, {
-        headers: { "Cookie": `session=${SESSION}` }
+        headers: {
+            "Cookie": `session=${SESSION}`,
+            "User-Agent": "https://github.com/MauritsWilke/AdventOfCode by mauritswilke@gmail.com"
+        }
     });
 
-    if (!res.ok) throw new Error(`Received ${res.status}: ${res.statusText}\nMake sure you're requesting an existing date`);
+    if (!res.ok) {
+        switch (res.status) {
+            case 404: {
+                throw new Error(`${res.status}: This day is not yet available!`);
+            }
+            case 400: {
+                throw new Error(`${res.status}: Bad credentials!`)
+            }
+            default: {
+                throw new Error(`${res.status} ${res.statusText}`);
+            }
+        }
+    }
 
     const data = await res.bytes();
 
