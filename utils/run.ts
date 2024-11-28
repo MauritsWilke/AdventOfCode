@@ -1,3 +1,5 @@
+import "../src/utils/index.ts";
+
 export async function run(currentYear: string, currentDate: string, part: string | number, input?: string) {
     const formattedDate = `0${currentDate}`.slice(-2);
 
