@@ -10,7 +10,8 @@ export async function runTests(YEAR: string, DATE: string, PART: string | number
         for (const i of tests.keys()) {
             const [input, answer] = tests[i];
 
-            const attempt = await run(YEAR, DATE, PART, input);
+            const attempt = await run(YEAR, DATE, PART, input).catch(() => "Error");
+
             if (attempt == answer) console.log(`%c(${i}) Passed`, "background-color: green")
             else {
                 console.log(`%c(${i}) Failed`, "background-color: red");
@@ -20,6 +21,6 @@ export async function runTests(YEAR: string, DATE: string, PART: string | number
         }
     } else console.log("No tests were specified");
 
-    const attempt = await run(YEAR, DATE, PART);
+    const attempt = await run(YEAR, DATE, PART).catch(() => "Error");
     console.log(`%cPuzzle input gives ${attempt}`, "background-color: orange");
 }
