@@ -1,7 +1,13 @@
 {
     "tasks": {
-        "prep": "deno run -A --env-file --unstable-cron utils/prep.ts",
-        "solve": "deno run -A --env-file utils/solve.ts"
+        "prep": {
+            "command": "deno run -A --env-file --unstable-cron utils/prep.ts",
+            "description": "deno task prep YEAR DAY PART WATCH"
+        },
+        "solve": {
+            "command": "deno run -A --env-file utils/solve.ts",
+            "description": "deno task solve YEAR DAY PART"
+        }
     },
     "imports": {
         "@std/assert": "jsr:@std/assert@1",
