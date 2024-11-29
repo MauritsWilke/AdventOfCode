@@ -13,4 +13,6 @@ interface Array<T> {
     chunk(size: number): T[][]
     window(size: number): T[][]
     pairs(): T[][]
+    // deno-lint-ignore no-explicit-any
+    zip(arr: any): T[]
 }

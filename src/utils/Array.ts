@@ -48,3 +48,8 @@ Array.prototype.window = function (size: number) {
 Array.prototype.pairs = function () {
     return this.map((v, i) => this.slice(i + 1).map(w => [v, w])).flat();
 }
+
+// deno-lint-ignore no-explicit-any
+Array.prototype.zip = function (arr: any[]) {
+    return this.map((v, i) => v += arr[i])
+}
