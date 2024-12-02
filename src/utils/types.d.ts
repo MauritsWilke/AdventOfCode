@@ -16,7 +16,7 @@ interface Array<T> {
     // deno-lint-ignore no-explicit-any
     zip(arr: any): T[]
     frequencies(): { [key: string | number]: number }
-    windows(size: number): Generator<T[]>
+    windowGen(size: number): Generator<T[]>
     mean(): number
     median(): number
 }

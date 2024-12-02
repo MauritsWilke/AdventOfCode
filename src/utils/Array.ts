@@ -34,7 +34,7 @@ Array.prototype.chunk = function (size: number) {
     return arr;
 }
 
-Array.prototype.windows = function* (size: number) {
+Array.prototype.windowGen = function* (size: number) {
     if (size < 1) return [[]];
     if (size >= this.length) return [this];
 
