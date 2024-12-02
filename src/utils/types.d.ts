@@ -1,5 +1,9 @@
 interface String {
     matchOverlapping(regex: RegExp): string[]
+    posInts(): number[]
+    negInts(): number[]
+    ints(): number[]
+    nums(): number[]
 }
 
 interface Array<T> {
