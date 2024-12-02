@@ -12,7 +12,7 @@ export async function runTests(YEAR: string, DATE: string, PART: string | number
         for (const i of tests.keys()) {
             const [input, answer] = tests[i];
 
-            const attempt = await run(YEAR, DATE, PART, input).catch(() => "Error");
+            const attempt = await run(YEAR, DATE, PART, input).catch((e) => `Error: ${e}`);
 
             if (attempt == answer) console.log(`%c(${i}) Passed`, "background-color: green")
             else {
