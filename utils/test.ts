@@ -5,6 +5,8 @@ export async function runTests(YEAR: string, DATE: string, PART: string | number
     const formattedDate = `0${DATE}`.slice(-2);
 
     const { tests } = await import(`../src/${YEAR}/${formattedDate}/part${PART}.ts?t=${Date.now()}`);
+    const skipReal = tests[0] === true;
+    if (skipReal) tests.splice(0, 1);
 
     if (tests) {
         for (const i of tests.keys()) {
@@ -21,6 +23,8 @@ export async function runTests(YEAR: string, DATE: string, PART: string | number
         }
     } else console.log("No tests were specified");
 
-    const attempt = await run(YEAR, DATE, PART).catch(() => "Error");
-    console.log(`%cPuzzle input gives ${attempt}`, "background-color: orange");
+    if (!skipReal) {
+        const attempt = await run(YEAR, DATE, PART).catch(() => "Error");
+        console.log(`%cPuzzle input gives ${attempt}`, "background-color: orange");
+    } else console.log(`%cSkipped puzzle input`, "background-color: grey");
 }
