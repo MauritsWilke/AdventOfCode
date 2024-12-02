@@ -7,6 +7,10 @@
         "solve": {
             "command": "deno run -A --env-file utils/solve.ts",
             "description": "deno task solve YEAR DAY PART"
+        },
+        "benchmark": {
+            "command": "deno run -A utils/benchmark.ts",
+            "description": "deno task benchmark YEAR DAY PART ITERATIONS"
         }
     },
     "imports": {
