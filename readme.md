@@ -5,12 +5,15 @@ This year I decided to do Advent of Code with Deno, and I added utils:
  # Create part1.ts, part2.ts and start the test watcher
  # Allows for fetching the input right when it becomes available :D
  $ deno task prep
+
  # Submit your solution
  $ deno task solve
 
- # By default both use the current day part 1, but both allow for arguments:
- # YEAR DAY PART (WATCH) -> Watch makes it so the input gets fetched exactly at release
- # 2024 1   2    true       and can only be passed to deno task prep
+ # Benchmark your solution
+ $ deno task benchmark
+
+ # The parameters of these commands can be found with:
+ $ deno task
 ``` 
 
 Looking for older years? Switch to the [main branch](https://github.com/MauritsWilke/AdventOfCode/tree/main)!
