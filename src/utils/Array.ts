@@ -34,9 +34,6 @@ Array.prototype.chunk = function (size: number) {
     return arr;
 }
 
-/**
- * 
- */
 Array.prototype.windows = function* (size: number) {
     if (size < 1) return [[]];
     if (size >= this.length) return [this];
@@ -70,6 +67,17 @@ Array.prototype.zip = function (arr: any[]) {
 
 Array.prototype.frequencies = function () {
     return this.reduce((a, b) => (a[b] ? a[b]++ : a[b] = 1) ? a : a, {})
+}
+
+Array.prototype.mean = function () {
+    return this.sum() / this.length
+}
+
+Array.prototype.median = function () {
+    const sorted = this.toSorted(ascending);
+
+    if (this.length % 2) return sorted[(sorted.length - 1) / 2]
+    else return (sorted[sorted.length / 2 - 1] + sorted[sorted.length / 2]) / 2
 }
 
 declare global {

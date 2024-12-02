@@ -17,4 +17,6 @@ interface Array<T> {
     zip(arr: any): T[]
     frequencies(): { [key: string | number]: number }
     windows(size: number): Generator<T[]>
+    mean(): number
+    median(): number
 }
