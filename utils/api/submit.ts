@@ -23,7 +23,7 @@ export async function submit(YEAR: string, DATE: string, PART: string, SESSION: 
         const info = main.replaceAll(/<([a-z][\s\S]*?)\s*\/?>|<\/([a-z][\s\S]*?)\s*\/?>/gm, "");
         console.log(`\n${info}\n`);
     } else if (main.match(/You gave an answer too recently/gm)) {
-        console.log(`%You gave an answer too recently`, "background-color: orange");
+        console.log(`%cYou gave an answer too recently`, "background-color: orange");
     } else if (main.match(/You don't seem to be solving the right level/)) {
         console.log(`%cYou already completed this or it is still locked`, "background-color: yellow");
     } else {
