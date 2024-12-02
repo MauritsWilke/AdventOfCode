@@ -15,4 +15,6 @@ interface Array<T> {
     pairs(): T[][]
     // deno-lint-ignore no-explicit-any
     zip(arr: any): T[]
+    frequencies(): { [key: string | number]: number }
+    windows(size: number): Generator<T[]>
 }

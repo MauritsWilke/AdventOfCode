@@ -34,7 +34,21 @@ Array.prototype.chunk = function (size: number) {
     return arr;
 }
 
-// TODO pass a size AND a function to reduce memory usage
+/**
+ * 
+ */
+Array.prototype.windows = function* (size: number) {
+    if (size < 1) return [[]];
+    if (size >= this.length) return [this];
+
+    for (let i = 0; i < this.length - size + 1; i++) {
+        yield this.slice(i, i + size);
+    }
+}
+
+/**
+ * If possible use windows() instead
+ */
 Array.prototype.window = function (size: number) {
     if (size < 1) return [[]];
     if (size >= this.length) return [this];
@@ -53,3 +67,18 @@ Array.prototype.pairs = function () {
 Array.prototype.zip = function (arr: any[]) {
     return this.map((v, i) => v += arr[i])
 }
+
+Array.prototype.frequencies = function () {
+    return this.reduce((a, b) => (a[b] ? a[b]++ : a[b] = 1) ? a : a, {})
+}
+
+declare global {
+    // deno-lint-ignore no-var
+    var ascending: (a: number, b: number) => number
+    // deno-lint-ignore no-var
+    var descending: (a: number, b: number) => number
+}
+
+// Sorting predicates
+globalThis.ascending = (a: number, b: number) => a - b;
+globalThis.descending = (a: number, b: number) => b - a;
