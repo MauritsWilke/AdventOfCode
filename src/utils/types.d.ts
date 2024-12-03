@@ -23,4 +23,7 @@ interface Array<T> {
     windowGen(size: number): Generator<T[]>
     mean(): number
     median(): number
+    log(): T[]
+    allUnique(): boolean
+    allEqual(): boolean
 }

@@ -80,6 +80,19 @@ Array.prototype.median = function () {
     else return (sorted[sorted.length / 2 - 1] + sorted[sorted.length / 2]) / 2
 }
 
+Array.prototype.log = function () {
+    this.map(v => console.log(v))
+    return this;
+}
+
+Array.prototype.allUnique = function () {
+    return this.length === new Set(this).size
+}
+
+Array.prototype.allEqual = function () {
+    return new Set(this).size === 1
+}
+
 declare global {
     // deno-lint-ignore no-var
     var ascending: (a: number, b: number) => number
