@@ -4,6 +4,7 @@ interface String {
     negInts(): number[]
     ints(): number[]
     nums(): number[]
+    lines(): string[]
 }
 
 interface Array<T> {

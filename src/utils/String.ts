@@ -44,3 +44,7 @@ String.prototype.ints = function () {
 String.prototype.nums = function () {
     return this.match(/-?\d+(\.\d+)?/g)?.map(Number) ?? []
 }
+
+String.prototype.lines = function () {
+    return this.split("\n").filter(v => v !== "")
+}
