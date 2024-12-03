@@ -8,11 +8,11 @@ interface String {
 }
 
 interface Array<T> {
-    sum(): number
-    product(): number
+    sum(this: Array<number>): number
+    product(this: Array<number>): number
     uniques(): T[]
-    max(): number
-    min(): number
+    max(this: Array<number>): number
+    min(this: Array<number>): number
     // deno-lint-ignore no-explicit-any
     intersect(arr: any): T[]
     chunk(size: number): T[][]
@@ -22,8 +22,8 @@ interface Array<T> {
     zip(arr: any): T[]
     frequencies(): { [key: string | number]: number }
     windowGen(size: number): Generator<T[]>
-    mean(): number
-    median(): number
+    mean(this: Array<number>): number
+    median(this: Array<number>): number
     log(): T[]
     allUnique(): boolean
     allEqual(): boolean
