@@ -46,5 +46,5 @@ String.prototype.nums = function () {
 }
 
 String.prototype.lines = function () {
-    return this.split("\n").filter(v => v !== "")
+    return this.trim().split("\n")
 }
