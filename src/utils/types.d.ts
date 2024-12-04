@@ -5,6 +5,7 @@ interface String {
     ints(): number[]
     nums(): number[]
     lines(): string[]
+    chunk(size: number): string[]
 }
 
 interface Array<T> {

@@ -48,3 +48,8 @@ String.prototype.nums = function () {
 String.prototype.lines = function () {
     return this.trim().split("\n")
 }
+
+String.prototype.chunk = function (size: number) {
+    const regex = new RegExp(`(.{${size}}|.*$)`, "gm");
+    return this.match(regex)!.slice(0, -1);
+}
