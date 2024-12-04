@@ -4,9 +4,11 @@ declare global {
     // deno-lint-ignore no-var
     var numberMap: Map<string, number>
     // deno-lint-ignore no-var
-    var diaDeltas: [number, number][]
+    var adjacent: [number, number][]
     // deno-lint-ignore no-var
     var deltas: [number, number][]
+    // deno-lint-ignore no-var
+    var diag: [number, number][]
 }
 
 globalThis.alphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -24,7 +26,7 @@ globalThis.numberMap = new Map<string, number>([
     ["nine", 9],
 ])
 
-globalThis.diaDeltas = [
+globalThis.adjacent = [
     [-1, -1],
     [0, -1],
     [1, -1],
@@ -33,13 +35,20 @@ globalThis.diaDeltas = [
     [-1, 1],
     [0, 1],
     [1, 1]
-]
+];
 
 globalThis.deltas = [
     [0, -1],
     [0, 1],
     [-1, 0],
     [1, 0]
+]
+
+globalThis.diag = [
+    [-1, -1],
+    [1, -1],
+    [-1, 1],
+    [1, 1]
 ]
 
 export { }
