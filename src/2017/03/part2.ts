@@ -9,7 +9,7 @@ export default function solution(input: string) {
     while (true) {
         let sum = 0;
 
-        diaDeltas.forEach(delta => {
+        adjacent.forEach(delta => {
             const cur = currentCoord.zip(delta).join(".");
             sum += coords.get(cur) ?? 0;
         });
