@@ -13,5 +13,12 @@
 			"(v,i,a) => "
 		],
 		"description": "Shortcut for all properties in iter tools"
-	}
+	},
+    "Insert test case variable": {
+        "scope": "javascript,typescript",
+        "prefix": "tca",
+        "body": [
+            "const test_case = `$0`",
+        ]
+    }
 }
