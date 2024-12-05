@@ -18,7 +18,7 @@ export default function solution(input: string) {
                 const mustBeBefore = mustBefore[page] ?? [];
                 return mustBeBefore.map(p => update.indexOf(p) < i).every(v => v);
             })
-        }).map(oldOrder => oldOrder.bubbleSort((a, b) => mustBefore[a]?.includes(b) ? 1 : -1))
+        }).map(oldOrder => oldOrder.sort((a, b) => mustBefore[a]?.includes(b) ? 1 : -1))
         .reduce((a, b) => a + +b.at((b.length - 1) / 2)!, 0);
 }
 
