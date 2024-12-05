@@ -28,4 +28,5 @@ interface Array<T> {
     log(): T[]
     allUnique(): boolean
     allEqual(): boolean
+    bubbleSort(fn: (a: T, B: T) => number): T[]
 }
